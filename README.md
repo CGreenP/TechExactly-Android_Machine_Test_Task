@@ -115,7 +115,7 @@ The application follows the **MVVM (Model-View-ViewModel)** architectural patter
 - `Screens.kt` : defines the routes of the screen.
 - `CustomNavType.kt`: defines the way the User object is parsed.
 
-## Bonus Features
+## Additional Features
 - **Search Functionality:** The app implements a search feature that allows users to filter the user list by name using the search bar.
 - **Clean Code:** The codebase is clean, readable, and well-structured.
 - **Modern UI:** Uses Jetpack Compose to build a modern and intuitive UI.
