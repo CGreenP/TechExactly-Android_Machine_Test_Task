@@ -32,7 +32,7 @@ fun HomeScreenContent(
 ) {
     val uiState by mainViewModel.uiState.collectAsState()
     Box(
-        modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center
+        modifier = Modifier.fillMaxSize()
     ) {
         when (val state = uiState) {
             is UiState.Error -> {

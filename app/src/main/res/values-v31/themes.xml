@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.TechExactly" parent="android:Theme.Material.Light.NoActionBar" />
     <style name="Theme.App.Starting" parent="Theme.SplashScreen.IconBackground">
         <item name="android:windowBackground">@color/teal_700</item>
         <item name="windowSplashScreenIconBackgroundColor">@color/ic_launcher_background</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/animated_logo</item>
         <item name="postSplashScreenTheme">@style/Theme.TechExactly</item>
     </style>
 </resources>

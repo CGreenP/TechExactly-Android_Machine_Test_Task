@@ -214,7 +214,7 @@ fun UserDetailsItemCompany(
                 value = company.catchPhrase
             )
             UserDetailsItemCompanyRow(
-                icon = Icons.Default.Work, title = "Bs", value = company.bs
+                icon = Icons.Default.Work, title = "Business", value = company.bs
             )
         }
     })
