@@ -40,6 +40,11 @@ import com.example.techexactly.model.dataclass.Company
 import com.example.techexactly.model.dataclass.Geo
 import com.example.techexactly.model.dataclass.User
 
+/**
+ * Composable function to display the details of a user in a card format.
+ *
+ * @param user The [User] object containing the user's information to be displayed.
+ */
 @Composable
 fun UserDetailsBody(user: User) {
     ElevatedCard(
@@ -56,27 +61,28 @@ fun UserDetailsBody(user: User) {
         ) {
             UserDetailsItem(icon = Icons.Default.Person, title = "Name", value = user.name)
             UserDetailsItem(
-                icon = Icons.Default.AlternateEmail,
-                title = "Username",
-                value = user.username
+                icon = Icons.Default.AlternateEmail, title = "Username", value = user.username
             )
             UserDetailsItem(icon = Icons.Default.Email, title = "Email", value = user.email)
             UserDetailsItem(icon = Icons.Default.Call, title = "Phone", value = user.phone)
             UserDetailsItem(icon = Icons.Default.Language, title = "Website", value = user.website)
             UserDetailsItemAddress(
-                icon = Icons.Default.Home,
-                title = "Address",
-                address = user.address
+                icon = Icons.Default.Home, title = "Address", address = user.address
             )
             UserDetailsItemCompany(
-                icon = Icons.Default.Apartment,
-                title = "Company",
-                company = user.company
+                icon = Icons.Default.Apartment, title = "Company", company = user.company
             )
         }
     }
 }
 
+/**
+ * Composable function to display a user detail item in a list format.
+ *
+ * @param icon The icon to be displayed in the leading content.  Should be an [ImageVector].
+ * @param title The title of the detail item, displayed as the headline.
+ * @param value The value of the detail item, displayed as the supporting content.
+ */
 @Composable
 fun UserDetailsItem(
     icon: ImageVector, title: String, value: String
@@ -107,6 +113,13 @@ fun UserDetailsItem(
     })
 }
 
+/**
+ * Composable function to display user address details in a ListItem.
+ *
+ * @param icon The icon to display representing the address.
+ * @param title The title of the address section (e.g., "Address").
+ * @param address The [Address] object containing the address information.
+ */
 @Composable
 fun UserDetailsItemAddress(
     icon: ImageVector, title: String, address: Address
@@ -144,9 +157,7 @@ fun UserDetailsItemAddress(
                 icon = Icons.Default.LocationCity, title = "City", value = address.city
             )
             UserDetailsItemAddressRow(
-                icon = Icons.Default.MarkunreadMailbox,
-                title = "Zipcode",
-                value = address.zipcode
+                icon = Icons.Default.MarkunreadMailbox, title = "Zipcode", value = address.zipcode
             )
             UserDetailsItemAddressRow(
                 icon = Icons.Default.LocationOn,
@@ -157,6 +168,13 @@ fun UserDetailsItemAddress(
     })
 }
 
+/**
+ * Composable function to display a user detail item row representing an address.
+ *
+ * @param icon The icon to be displayed at the start of the row.  Typically an address-related icon like [Icons.Outlined.LocationOn].
+ * @param title The title of the address detail, e.g., "Address" or "Shipping Address".  Displayed using `MaterialTheme.typography.bodyMedium`.
+ * @param value The actual address value to be displayed.  Displayed using `MaterialTheme.typography.titleMedium`.
+ */
 @Composable
 fun UserDetailsItemAddressRow(
     icon: ImageVector, title: String, value: String
@@ -178,6 +196,13 @@ fun UserDetailsItemAddressRow(
     })
 }
 
+/**
+ * Composable function to display company details within a user details list item.
+ *
+ * @param icon The leading icon for the list item, representing the company.
+ * @param title The title of the list item, e.g., "Company".
+ * @param company The [Company] object containing the company's information to display.  It will display the company name, catchphrase and business.
+ */
 @Composable
 fun UserDetailsItemCompany(
     icon: ImageVector, title: String, company: Company
@@ -221,6 +246,14 @@ fun UserDetailsItemCompany(
 
 }
 
+/**
+ * A composable function that displays a row of user details, specifically for company-related information.
+ * It consists of an icon, a title, and a value.  It uses a Material 3 `ListItem` to structure the row.
+ *
+ * @param icon The icon to display at the start of the row, representing the detail type (e.g., a company logo or building icon).
+ * @param title The title or label for the detail, describing what information is being shown (e.g., "Company Name").
+ * @param value The actual value of the detail, which will be displayed below the title (e.g., "Acme Corp").
+ */
 @Composable
 fun UserDetailsItemCompanyRow(
     icon: ImageVector, title: String, value: String

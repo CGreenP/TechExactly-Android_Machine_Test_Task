@@ -11,6 +11,16 @@ import com.example.techexactly.view.user.UserDetailsScreen
 import kotlin.reflect.typeOf
 
 
+/**
+ * Sets up the navigation graph for the application.
+ *
+ * This function defines the composable structure for navigating between different screens in the app.
+ * It uses a [NavHost] to manage the navigation stack and defines routes for the [HomeScreen] and
+ * [UserDetailsScreen].
+ *
+ * @param navController The [NavHostController] responsible for managing navigation within the app.  This controller
+ *                      is typically created in the main activity or a higher-level composable and passed down to this function.
+ */
 @Composable
 fun SetupNavGraph(
     navController: NavHostController

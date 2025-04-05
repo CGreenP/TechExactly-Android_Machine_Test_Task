@@ -26,6 +26,12 @@ import com.example.techexactly.model.dataclass.User
 import com.example.techexactly.viewmodel.MainViewModel
 import com.example.techexactly.viewmodel.UiState
 
+/**
+ * Displays the content of the Home Screen, handling different UI states (Loading, Success, Error).
+ *
+ * @param onUserClicked Callback function triggered when a user in the list is clicked. It receives the clicked [User] as a parameter.
+ * @param mainViewModel The [MainViewModel] instance providing the current UI state.
+ */
 @Composable
 fun HomeScreenContent(
     onUserClicked: (User) -> Unit, mainViewModel: MainViewModel

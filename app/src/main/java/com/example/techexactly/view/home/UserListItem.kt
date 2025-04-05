@@ -28,6 +28,12 @@ import com.example.techexactly.model.dataclass.Company
 import com.example.techexactly.model.dataclass.Geo
 import com.example.techexactly.model.dataclass.User
 
+/**
+ * Composable function to display a user item in a list.
+ *
+ * @param user The [User] data to display.
+ * @param onUserClicked Callback function to be invoked when the user item is clicked.  It receives the clicked [User] as a parameter.
+ */
 @Composable
 fun UserListItem(user: User, onUserClicked: (User) -> Unit) {
     ElevatedCard(

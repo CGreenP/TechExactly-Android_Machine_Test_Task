@@ -13,6 +13,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 
+/**
+ * Composable function that creates a top app bar for the user details screen.
+ *
+ * @param title The title to display in the top app bar.
+ * @param scrollBehavior The [TopAppBarScrollBehavior] to handle scrolling behavior of the top app bar.  This allows for collapsing/expanding behavior.  Typically provided by a `TopAppBarDefaults.enterAlwaysScrollBehavior()` or similar.
+ * @param onBackClicked Callback function to be executed when the back button is clicked.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun UserDetailsTopBar(

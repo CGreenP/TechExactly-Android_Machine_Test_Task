@@ -18,6 +18,12 @@ import com.example.techexactly.model.dataclass.User
 import com.example.techexactly.viewmodel.MainViewModel
 import org.koin.androidx.compose.koinViewModel
 
+/**
+ * The main screen of the application, displaying a list of users and a search bar.
+ *
+ * @param onUserClicked Callback function invoked when a user item in the list is clicked.  It takes a [User] object as a parameter representing the clicked user.
+ * @param mainViewModel The [MainViewModel] instance used to manage the data and state for the screen, defaults to an instance retrieved from Koin.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(

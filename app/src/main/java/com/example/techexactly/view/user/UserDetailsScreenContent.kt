@@ -16,6 +16,14 @@ import com.example.techexactly.model.dataclass.Company
 import com.example.techexactly.model.dataclass.Geo
 import com.example.techexactly.model.dataclass.User
 
+/**
+ * Composable function that displays the main content of the user details screen.
+ *
+ * It uses a [LazyColumn] to efficiently display the user's information, which can include a header
+ * and a body section.  The content is arranged vertically and centered horizontally within the available width.
+ *
+ * @param user The [User] object containing the details to be displayed.  Must not be null.
+ */
 @Composable
 fun UserDetailsScreenContent(
     user: User

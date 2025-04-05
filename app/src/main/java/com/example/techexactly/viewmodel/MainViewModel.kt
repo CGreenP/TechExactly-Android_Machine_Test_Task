@@ -9,6 +9,12 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
+/**
+ * ViewModel responsible for managing the main screen's data and UI state.
+ * It interacts with the UserRepository to fetch and filter user data.
+ *
+ * @property userRepository The repository used to access user data.
+ */
 class MainViewModel(private val userRepository: UserRepository) : ViewModel() {
     private val _uiState = MutableStateFlow<UiState>(UiState.Loading)
     val uiState: StateFlow<UiState> = _uiState.asStateFlow()

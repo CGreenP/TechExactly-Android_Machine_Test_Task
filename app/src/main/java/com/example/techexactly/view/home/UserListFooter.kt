@@ -14,6 +14,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
+/**
+ * Composable function that displays a footer at the end of a user list.
+ *
+ * This footer includes a horizontal divider, a "End of the list" text,
+ * and spacing for visual separation.  It is designed to be placed
+ * at the bottom of a scrollable user list to indicate the end of the data.
+ *
+ */
 @Composable
 fun UserListFooter() {
     Column(

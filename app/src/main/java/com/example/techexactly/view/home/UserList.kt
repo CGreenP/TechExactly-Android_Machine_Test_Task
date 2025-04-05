@@ -26,6 +26,12 @@ import com.example.techexactly.model.dataclass.Company
 import com.example.techexactly.model.dataclass.Geo
 import com.example.techexactly.model.dataclass.User
 
+/**
+ * Composable function to display a list of users.
+ *
+ * @param users A list of [User] objects to be displayed.  If the list is empty, a message indicating "No Users Found" will be displayed.
+ * @param onUserClicked A lambda function to be called when a user item is clicked.  It takes a [User] object as a parameter.
+ */
 @Composable
 fun UserList(users: List<User>, onUserClicked: (User) -> Unit) {
     LazyColumn(

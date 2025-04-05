@@ -28,6 +28,13 @@ import com.example.techexactly.model.dataclass.Company
 import com.example.techexactly.model.dataclass.Geo
 import com.example.techexactly.model.dataclass.User
 
+/**
+ * Composable function that displays a header section for user details.
+ * It shows the user's profile picture (represented by the first letter of their name),
+ * name, and email address within an elevated card.
+ *
+ * @param user The [User] object containing the user's information (name and email).
+ */
 @Composable
 fun UserDetailsHeader(user: User) {
     ElevatedCard(

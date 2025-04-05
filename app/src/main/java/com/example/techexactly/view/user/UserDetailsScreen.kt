@@ -15,6 +15,14 @@ import com.example.techexactly.model.dataclass.Company
 import com.example.techexactly.model.dataclass.Geo
 import com.example.techexactly.model.dataclass.User
 
+/**
+ * Composable function for displaying the user details screen.
+ *
+ * This screen displays detailed information about a specific user.  It includes a top app bar with the user's name and a back button, and a content area that displays the user's details.
+ *
+ * @param user The [User] object containing the details of the user to be displayed.
+ * @param onBackClicked Callback function to be executed when the back button in the top app bar is clicked. This typically navigates the user back to the previous screen.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun UserDetailsScreen(
