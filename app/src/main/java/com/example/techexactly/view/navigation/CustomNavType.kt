@@ -6,6 +6,11 @@ import androidx.navigation.NavType
 import com.example.techexactly.model.dataclass.User
 import kotlinx.serialization.json.Json
 
+/**
+ *  Custom Navigation Type for complex objects (in this case, a User object).  Allows passing
+ *  objects as navigation arguments instead of just simple types.  Uses Kotlin Serialization
+ *  to encode/decode the object as a JSON string for storage in a Bundle or URI.
+ */
 object CustomNavType {
     val UserType = object : NavType<User>(
         isNullableAllowed = false

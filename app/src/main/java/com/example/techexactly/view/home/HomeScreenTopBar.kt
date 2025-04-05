@@ -35,6 +35,18 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.techexactly.R
 
+/**
+ * Composable function for the top app bar of the Home Screen.
+ *
+ * This composable displays a centered top app bar with the app logo, title, subtitle, and a search bar.
+ * The search bar can be toggled via a search icon button, and it filters the displayed content based on user input.
+ *
+ * @param title The main title to display in the top bar.
+ * @param subtitle The subtitle to display below the main title.
+ * @param scrollBehavior The scroll behavior for the top app bar, handling scrolling effects.
+ * @param searchQuery The current search query string. Defaults to an empty string.
+ * @param onSearchQueryChanged Callback function invoked when the search query changes. It receives the new query string as a parameter.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreenTopBar(
@@ -76,16 +88,17 @@ fun HomeScreenTopBar(
                 }
             }
         }, navigationIcon = {
-                Image(
-                    modifier = Modifier.padding(start = 8.dp).size(24.dp),
-                    painter = painterResource(id = R.drawable.app_logo),
-                    contentDescription = null,
-                    colorFilter = ColorFilter.tint(
-                        MaterialTheme.colorScheme.onSurface
-                    )
+            Image(
+                modifier = Modifier
+                    .padding(start = 8.dp)
+                    .size(24.dp),
+                painter = painterResource(id = R.drawable.app_logo),
+                contentDescription = null,
+                colorFilter = ColorFilter.tint(
+                    MaterialTheme.colorScheme.onSurface
                 )
-            },
-            scrollBehavior = scrollBehavior
+            )
+        }, scrollBehavior = scrollBehavior
         )
         AnimatedVisibility(visible = showSearchBar) {
             DockedSearchBar(

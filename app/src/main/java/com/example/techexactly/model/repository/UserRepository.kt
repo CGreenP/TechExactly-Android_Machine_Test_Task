@@ -7,6 +7,12 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
+/**
+ * Repository class responsible for managing user data.
+ * It interacts with the [UserApi] to fetch user information from a remote source.
+ *
+ * @property userApi The API interface used to communicate with the user data source.
+ */
 class UserRepository(private val userApi: UserApi) {
     fun getUsers(): Flow<Result<List<User>>> = flow {
         try {
