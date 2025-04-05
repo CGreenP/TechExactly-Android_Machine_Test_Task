@@ -18,6 +18,7 @@ class MainViewModel(private val userRepository: UserRepository) : ViewModel() {
 
     fun fetchUsers() {
         viewModelScope.launch {
+            _uiState.value = UiState.Loading
             userRepository.getUsers().collect { result ->
                 when (result.isSuccess) {
                     true -> {

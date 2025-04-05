@@ -1,5 +1,8 @@
 package com.example.techexactly.model.dataclass
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class User(
     val id: Long,
     val name: String,
@@ -11,6 +14,7 @@ data class User(
     val company: Company,
 )
 
+@Serializable
 data class Address(
     val street: String,
     val suite: String,
@@ -19,11 +23,13 @@ data class Address(
     val geo: Geo,
 )
 
+@Serializable
 data class Geo(
     val lat: String,
     val lng: String,
 )
 
+@Serializable
 data class Company(
     val name: String,
     val catchPhrase: String,
