@@ -68,11 +68,11 @@ The project uses the following key dependencies:
 ```bash
 git clone https://github.com/CGreenP/TechExactly-Android_Machine_Test_Task.git
 ```
-3.  **Open in Android Studio:**
+2.  **Open in Android Studio:**
     -   Launch Android Studio.
     -   Select "Open an existing Android Studio project."
     -   Navigate to the cloned repository and open the `app` directory.
-4.  **Build and Run:**
+3.  **Build and Run:**
     -   Click the "Sync Project with Gradle Files" button.
     -   Once the project is synchronized, click the "Run" button (green play icon) or use `Shift + F10` to build and run the application on an emulator or connected device.
 
