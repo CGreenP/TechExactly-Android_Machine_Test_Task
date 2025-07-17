@@ -1,5 +1,8 @@
 package com.example.techexactly.view.user
 
+import android.net.Uri
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -7,6 +10,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -28,6 +33,14 @@ import com.example.techexactly.model.dataclass.User
 fun UserDetailsScreenContent(
     user: User
 ) {
+
+    val selectedImageUri = remember { mutableStateOf<Uri?>(null) }
+    val imagePickerLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.GetContent()
+    ) { uri: Uri? ->
+        selectedImageUri.value = uri
+    }
+
     LazyColumn(
         modifier = Modifier
             .fillMaxWidth()
@@ -36,7 +49,13 @@ fun UserDetailsScreenContent(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         item {
-            UserDetailsHeader(user = user)
+            UserDetailsHeader(
+                user = user,
+                profileImageUri = selectedImageUri.value,
+                onEditClick = {
+                    imagePickerLauncher.launch("image/*")
+                }
+            )
         }
         item {
             UserDetailsBody(user = user)
