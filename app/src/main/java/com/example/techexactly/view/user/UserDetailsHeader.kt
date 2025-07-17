@@ -1,5 +1,6 @@
 package com.example.techexactly.view.user
 
+import android.net.Uri
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -26,6 +27,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import coil.compose.rememberAsyncImagePainter
 import com.example.techexactly.model.dataclass.Address
 import com.example.techexactly.model.dataclass.Company
 import com.example.techexactly.model.dataclass.Geo
@@ -39,7 +41,11 @@ import com.example.techexactly.model.dataclass.User
  * @param user The [User] object containing the user's information (name and email).
  */
 @Composable
-fun UserDetailsHeader(user: User) {
+fun UserDetailsHeader(
+    user: User,
+    profileImageUri: Uri?,
+    onEditClick: () -> Unit
+) {
     ElevatedCard(
         modifier = Modifier.fillMaxWidth(),
     ) {
@@ -67,20 +73,28 @@ fun UserDetailsHeader(user: User) {
                         .size(100.dp),
                     contentAlignment = Alignment.BottomEnd
                 ) {
-                    Box(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .clip(CircleShape)
-                            .background(
-                                color = MaterialTheme.colorScheme.primaryContainer,
-                            ),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Text(
-                            text = user.name.first().toString(),
-                            style = MaterialTheme.typography.headlineLarge,
-                            color = MaterialTheme.colorScheme.onPrimaryContainer,
+                    if (profileImageUri != null) {
+                        androidx.compose.foundation.Image(
+                            painter = rememberAsyncImagePainter(profileImageUri),
+                            contentDescription = "Profile Image",
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .clip(CircleShape)
                         )
+                    } else {
+                        Box(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .clip(CircleShape)
+                                .background(MaterialTheme.colorScheme.primaryContainer),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Text(
+                                text = user.name.first().toString(),
+                                style = MaterialTheme.typography.headlineLarge,
+                                color = MaterialTheme.colorScheme.onPrimaryContainer,
+                            )
+                        }
                     }
 
                     Box(
@@ -88,9 +102,7 @@ fun UserDetailsHeader(user: User) {
                             .size(25.dp)
                             .clip(CircleShape)
                             .background(MaterialTheme.colorScheme.secondary)
-                            .clickable {
-                                // TODO: Add edit logic here
-                            },
+                            .clickable { onEditClick() },
                         contentAlignment = Alignment.Center
                     ) {
                         Icon(
@@ -101,6 +113,7 @@ fun UserDetailsHeader(user: User) {
                         )
                     }
                 }
+
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(
                     text = user.name, style = MaterialTheme.typography.headlineLarge
@@ -145,5 +158,9 @@ fun PreviewUserDetailsHeader() {
             "harness real-time e-markets"
         )
     )
-    UserDetailsHeader(user)
+    UserDetailsHeader(
+        user = user,
+        profileImageUri = null,
+        onEditClick = {}
+    )
 }
