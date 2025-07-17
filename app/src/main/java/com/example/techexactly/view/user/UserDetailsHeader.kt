@@ -1,17 +1,20 @@
 package com.example.techexactly.view.user
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Icon
@@ -61,17 +64,42 @@ fun UserDetailsHeader(user: User) {
             ) {
                 Box(
                     modifier = Modifier
-                        .size(100.dp)
-                        .clip(CircleShape)
-                        .background(
-                            color = MaterialTheme.colorScheme.primaryContainer,
-                        ), contentAlignment = Alignment.Center
+                        .size(100.dp),
+                    contentAlignment = Alignment.BottomEnd
                 ) {
-                    Text(
-                        text = user.name.first().toString(),
-                        style = MaterialTheme.typography.headlineLarge,
-                        color = MaterialTheme.colorScheme.onPrimaryContainer,
-                    )
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .clip(CircleShape)
+                            .background(
+                                color = MaterialTheme.colorScheme.primaryContainer,
+                            ),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = user.name.first().toString(),
+                            style = MaterialTheme.typography.headlineLarge,
+                            color = MaterialTheme.colorScheme.onPrimaryContainer,
+                        )
+                    }
+
+                    Box(
+                        modifier = Modifier
+                            .size(25.dp)
+                            .clip(CircleShape)
+                            .background(MaterialTheme.colorScheme.secondary)
+                            .clickable {
+                                // TODO: Add edit logic here
+                            },
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Edit,
+                            contentDescription = "Edit",
+                            modifier = Modifier.size(16.dp),
+                            tint = MaterialTheme.colorScheme.onSecondary
+                        )
+                    }
                 }
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(
