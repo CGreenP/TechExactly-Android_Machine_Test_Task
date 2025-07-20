@@ -1,17 +1,21 @@
 package com.example.techexactly.view.user
 
+import android.net.Uri
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Icon
@@ -23,6 +27,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import coil.compose.rememberAsyncImagePainter
 import com.example.techexactly.model.dataclass.Address
 import com.example.techexactly.model.dataclass.Company
 import com.example.techexactly.model.dataclass.Geo
@@ -36,7 +41,11 @@ import com.example.techexactly.model.dataclass.User
  * @param user The [User] object containing the user's information (name and email).
  */
 @Composable
-fun UserDetailsHeader(user: User) {
+fun UserDetailsHeader(
+    user: User,
+    profileImageUri: Uri?,
+    onEditClick: () -> Unit
+) {
     ElevatedCard(
         modifier = Modifier.fillMaxWidth(),
     ) {
@@ -61,18 +70,50 @@ fun UserDetailsHeader(user: User) {
             ) {
                 Box(
                     modifier = Modifier
-                        .size(100.dp)
-                        .clip(CircleShape)
-                        .background(
-                            color = MaterialTheme.colorScheme.primaryContainer,
-                        ), contentAlignment = Alignment.Center
+                        .size(100.dp),
+                    contentAlignment = Alignment.BottomEnd
                 ) {
-                    Text(
-                        text = user.name.first().toString(),
-                        style = MaterialTheme.typography.headlineLarge,
-                        color = MaterialTheme.colorScheme.onPrimaryContainer,
-                    )
+                    if (profileImageUri != null) {
+                        androidx.compose.foundation.Image(
+                            painter = rememberAsyncImagePainter(profileImageUri),
+                            contentDescription = "Profile Image",
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .clip(CircleShape)
+                        )
+                    } else {
+                        Box(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .clip(CircleShape)
+                                .background(MaterialTheme.colorScheme.primaryContainer),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Text(
+                                text = user.name.first().toString(),
+                                style = MaterialTheme.typography.headlineLarge,
+                                color = MaterialTheme.colorScheme.onPrimaryContainer,
+                            )
+                        }
+                    }
+
+                    Box(
+                        modifier = Modifier
+                            .size(25.dp)
+                            .clip(CircleShape)
+                            .background(MaterialTheme.colorScheme.secondary)
+                            .clickable { onEditClick() },
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Edit,
+                            contentDescription = "Edit",
+                            modifier = Modifier.size(16.dp),
+                            tint = MaterialTheme.colorScheme.onSecondary
+                        )
+                    }
                 }
+
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(
                     text = user.name, style = MaterialTheme.typography.headlineLarge
@@ -117,5 +158,9 @@ fun PreviewUserDetailsHeader() {
             "harness real-time e-markets"
         )
     )
-    UserDetailsHeader(user)
+    UserDetailsHeader(
+        user = user,
+        profileImageUri = null,
+        onEditClick = {}
+    )
 }
